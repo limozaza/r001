@@ -14,14 +14,14 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     this.setState({
       persons: [
         {name: "Zakaria", age: 32},
         {name: "Sofia", age: 31},
         {name: "Kassym", age: 3},
         {name: "Malika", age: 1},
-        {name: "BBB", age: 78},
+        {name: newName, age: 78},
       ]
     })
   }
@@ -30,8 +30,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I'm React App</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>My Hobbies: Nada</Person>
+        <button onClick={()=>this.switchNameHandler("INCONNU")}>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={()=>this.switchNameHandler("INCONNU Too")}>My Hobbies: Nada</Person>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
         <Person name={this.state.persons[3].name} age={this.state.persons[3].age}/>
