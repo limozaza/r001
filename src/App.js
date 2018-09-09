@@ -1,42 +1,73 @@
-import React, { Component } from 'react';
-import './App.css';
-import Person from './Person/Person';
+import React, { Component } from "react";
+import "./App.css";
+import Person from "./Person/Person";
 
 class App extends Component {
- 
   state = {
     persons: [
-      {name: "Zakaria", age: 32},
-      {name: "Sofia", age: 31},
-      {name: "Kassym", age: 3},
-      {name: "Malika", age: 1},
-      {name: "AAA", age: 32},
+      { name: "Zakaria", age: 32 },
+      { name: "Sofia", age: 31 },
+      { name: "Kassym", age: 3 },
+      { name: "Malika", age: 1 },
+      { name: "AAA", age: 32 }
     ]
-  }
+  };
 
-  switchNameHandler = (newName) => {
+  switchNameHandler = newName => {
     this.setState({
       persons: [
-        {name: "Zakaria", age: 32},
-        {name: "Sofia", age: 31},
-        {name: "Kassym", age: 3},
-        {name: "Malika", age: 1},
-        {name: newName, age: 78},
+        { name: "Zakaria", age: 32 },
+        { name: "Sofia", age: 31 },
+        { name: "Kassym", age: 3 },
+        { name: "Malika", age: 1 },
+        { name: newName, age: 78 }
       ]
-    })
-  }
+    });
+  };
+
+  nameChangedHandler = event => {
+    this.setState({
+      persons: [
+        { name: "Zakaria", age: 32 },
+        { name: "Sofia", age: 31 },
+        { name: "Kassym", age: 3 },
+        { name: "Malika", age: 1 },
+        { name: event.target.value, age: 78 }
+      ]
+    });
+  };
 
   render() {
     return (
       <div className="App">
         <h1>Hi, I'm React App</h1>
-        <button onClick={()=>this.switchNameHandler("INCONNU")}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={()=>this.switchNameHandler("INCONNU Too")}>My Hobbies: Nada</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        <Person name={this.state.persons[3].name} age={this.state.persons[3].age}/>
-        <Person name={this.state.persons[4].name} age={this.state.persons[4].age}/>
-        
+        <button onClick={() => this.switchNameHandler("INCONNU")}>
+          Switch Name
+        </button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          click={() => this.switchNameHandler("INCONNU Too")}
+        >
+          My Hobbies: Nada
+        </Person>
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        />
+        <Person
+          name={this.state.persons[3].name}
+          age={this.state.persons[3].age}
+        />
+        <Person
+          name={this.state.persons[4].name}
+          age={this.state.persons[4].age}
+          changed={this.nameChangedHandler}
+        />
       </div>
     );
   }
