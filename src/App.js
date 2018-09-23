@@ -38,10 +38,18 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "white",
+      font: "inheret",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+
     return (
       <div className="App">
         <h1>Hi, I'm React App</h1>
-        <button onClick={() => this.switchNameHandler("INCONNU")}>
+        <button style={style} onClick={() => this.switchNameHandler("INCONNU")}>
           Switch Name
         </button>
         <Person
